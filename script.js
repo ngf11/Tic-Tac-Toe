@@ -1,11 +1,8 @@
-function gameBoard() {
-  const board = [];
-  return { board };
-}
+const gameBoard = (function () {
+  const bordBoxes = document.querySelectorAll("[data-index]");
+  return { bordBoxes };
+})();
 
 function player(name, marker) {
   return { name, marker };
 }
-
-const bordBoxes = document.querySelectorAll("[data-index]");
-console.log(bordBoxes);
