@@ -22,6 +22,11 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  border: 2px solid black;
+  border-radius: 0.5rem;
+  background-color: black;
+  row-gap: 0.75rem;
+  column-gap: 0.75rem;
   height: 50vh;
   width: 50vw;
 }
@@ -30,9 +35,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 5rem;
+  font-size: 4rem;
   border: 1px solid black;
   border-radius: 0.5rem;
   height: 1fr;
   width: 1fr;
+  background-color: white;
 }
