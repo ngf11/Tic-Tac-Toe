@@ -1,4 +1,38 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gameBoard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  height: 50vh;
+  width: 50vw;
+}
+
+.game-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  height: 1fr;
+  width: 1fr;
 }
