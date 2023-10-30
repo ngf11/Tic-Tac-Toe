@@ -38,7 +38,7 @@ body {
   font-size: 4rem;
   border: 1px solid black;
   border-radius: 0.5rem;
-  height: 1fr;
-  width: 1fr;
+  height: 0.5fr;
+  width: 0.5fr;
   background-color: white;
 }

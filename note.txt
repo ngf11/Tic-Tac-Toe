@@ -1,0 +1,4 @@
+
+
+when player one clicks X
+when player two cliks O
