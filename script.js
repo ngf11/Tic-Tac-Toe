@@ -1,24 +1,26 @@
 const gameBoard = (function () {
   const gameBox = document.querySelectorAll(".game-box");
-  const bordBoxes = document.querySelectorAll("[data-index]");
   const resetGame = document.querySelector(".rest-game");
   let clickCount = 0;
   gameBox.forEach((item) => {
     item.addEventListener("click", (event) => {
+      if (item.textContent !== "") {
+        return;
+      }
       clickCount++;
-
       if (clickCount % 2 !== 0) {
-        item.innerHTML = "X";
+        item.textContent = "X";
       } else {
-        item.innerHTML = "O";
+        item.textContent = "O";
       }
     });
     resetGame.addEventListener("click", (event) => {
-      item.innerHTML = " ";
+      item.innerHTML = "";
+      clickCount = 0;
     });
   });
 
-  return { bordBoxes, gameBox };
+  return { gameBox };
 })();
 
 function player(name, marker) {
@@ -29,6 +31,10 @@ function player(name, marker) {
   };
   return { name, marker, scoreLevel, score };
 }
+
+const game = (function () {
+  const bordBoxes = document.querySelectorAll("[data-index]");
+})();
 
 function winnerOfGame() {
   const { name, marker, score } = player(name, marker, score);
