@@ -32,8 +32,25 @@ function player(name, marker) {
   return { name, marker, scoreLevel, score };
 }
 
+const playerOne = player("Player One", "X");
+const PlayerTwo = player("Player Two", "O");
+
 const game = (function () {
-  const bordBoxes = document.querySelectorAll("[data-index]");
+  const boardBoxes = document.querySelectorAll("[data-index]");
+  const boardArray = Array.from(boardBoxes).reduce((acc, box, index) => {
+    const rowIndex = Math.floor(index / 3);
+    const columnIndex = index % 3;
+
+    if (!acc[rowIndex]) {
+      acc[rowIndex] = [];
+    }
+
+    acc[rowIndex][columnIndex] = box;
+
+    return acc;
+  }, []);
+  console.table(boardArray);
+  console.log(boardArray[0][0]);
 })();
 
 function winnerOfGame() {
