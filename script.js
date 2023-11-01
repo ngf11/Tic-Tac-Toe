@@ -9,7 +9,7 @@ function player(name, marker) {
 
 const playerOne = player("Player One", "X");
 
-const PlayerTwo = player("Player Two", "O");
+const playerTwo = player("Player Two", "O");
 
 const gameBoard = (function () {
   const board = document.querySelectorAll(".game-box");
@@ -23,10 +23,25 @@ const gameBoard = (function () {
       clickCount++;
       if (clickCount % 2 !== 0) {
         item.textContent = playerOne.marker;
-        game();
       } else {
-        item.textContent = PlayerTwo.marker;
-        game();
+        item.textContent = playerTwo.marker;
+      }
+      const h2 = document.querySelector(".message");
+      h2.innerHTML = "Lets Play";
+      const winner = game.checkForWinner();
+
+      if (winner === "tie") {
+        // Handle tie
+        h2.textContent = "It's a tie!";
+      } else if (winner === playerOne.marker) {
+        // Handle player one win
+        playerOne.scoreLevel();
+        h2.innerHTML = "Player One wins!";
+      } else if (winner === playerTwo.marker) {
+        // Handle player two win
+        playerTwo.scoreLevel();
+        h2.innerHTML = "Player Two wins!";
+        console.log("Player Two wins!");
       }
     });
     resetGameBnt.addEventListener("click", (event) => {
@@ -34,23 +49,23 @@ const gameBoard = (function () {
       clickCount = 0;
     });
   });
-  return board;
+  return { board };
 })();
 
-const game = (function () {
-  const dataBoard = document.querySelectorAll("[data-index]");
-  const winsArr = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
+const game = {
+  checkForWinner: function () {
+    const dataBoard = document.querySelectorAll("[data-index]");
+    const winsArr = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
 
-  const checkForWinner = () => {
     for (const winCombination of winsArr) {
       const [a, b, c] = winCombination;
       const elements = [dataBoard[a], dataBoard[b], dataBoard[c]];
@@ -59,17 +74,13 @@ const game = (function () {
         elements[0].textContent === elements[1].textContent &&
         elements[1].textContent === elements[2].textContent
       ) {
-        // We have a winner
-
         return elements[0].textContent;
       }
     }
 
-    // No winner found
-    return "tie";
-  };
-  return checkForWinner();
-})();
+    // return "tie";
+  },
+};
 
 const displayController = function () {
   // i dont knbow what to do here

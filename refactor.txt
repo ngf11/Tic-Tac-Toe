@@ -140,3 +140,24 @@ const game = (function () {
 const displayController = function () {
   // i dont knbow what to do here
 };
+---------------
+const gameboard = (function () {
+  const rows = 3;
+  const columns = 3;
+
+  const board = [];
+
+  for (let i = 0; i < rows; i++) {
+    const rowArray = [];
+    for (let j = 0; j < columns; j++) {
+      rowArray.push("");
+    }
+    board.push(rowArray);
+  }
+  board[0][0] = "X";
+  board[1][1] = "X";
+  board[2][2] = "X";
+  console.table(board);
+  const renderboard = () => {};
+  renderboard();
+})();
