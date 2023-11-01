@@ -6,3 +6,4 @@ re fin this game once is document
 for now new need:
 -move the win functionality to another function
 -export the board function loop the win if statements see if that works 
+-- add a function that declars a winner after best of three games 
