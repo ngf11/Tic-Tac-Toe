@@ -275,3 +275,28 @@ const winner = (function () {
 const displayController = function () {
   // i dont knbow what to do here
 };
+-------
+
+const winner = (function () {
+  const board = gameBoard.board;
+  board.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const h2 = document.querySelector(".message");
+      const h3 = document.querySelector(".gameScoreTally");
+      h2.innerHTML = "Let's Play";
+      const result = game.checkForWinner();
+
+      if (result === "tie") {
+        h2.textContent = "It's a tie!";
+      } else if (result === playerOne.marker) {
+        h2.innerHTML = "Player One wins!";
+        playerOne.scoreLevel();
+      } else if (result === playerTwo.marker) {
+        h2.innerHTML = "Player Two wins!";
+        playerTwo.scoreLevel();
+      }
+
+      h3.textContent = `Player One: ${playerOne.score} | Player Two: ${playerTwo.score}`;
+    });
+  });
+})();

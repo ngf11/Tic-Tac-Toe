@@ -4,5 +4,6 @@ in a very bad way
 
 re fin this game once is document
 for now you need:
-
--- add a function that declars a winner after best of three games 
+- function that after every round that there is a winner resets board 
+- add a function that declars a winner after best of three games 
+if player.

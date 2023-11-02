@@ -1,10 +1,15 @@
 function player(name, marker) {
-  let score = 0;
-  const scoreLevel = () => {
-    score++;
-    return score;
+  return {
+    name,
+    marker,
+    score: 0,
+    scoreLevel: function () {
+      this.score++;
+    },
+    resetScore: function () {
+      this.score = 0;
+    },
   };
-  return { name, marker, scoreLevel, score };
 }
 
 const playerOne = player("Player One", "X");
@@ -26,13 +31,14 @@ const gameBoard = (function () {
       } else {
         item.textContent = playerTwo.marker;
       }
-    });
-    resetGameBnt.addEventListener("click", (event) => {
-      item.textContent = "";
-      clickCount = 0;
+      resetGameBnt.addEventListener("click", (event) => {
+        board.innerHTML = " ";
+        clickCount = 0;
+      });
     });
   });
-  return { board };
+
+  return { board, clickCount };
 })();
 
 const game = {
@@ -60,33 +66,50 @@ const game = {
         return elements[0].textContent;
       }
     }
-
     return "tie";
   },
 };
 
 const winner = (function () {
-  const { board } = gameBoard;
-  board.forEach((item) => {
+  const boardGame = gameBoard.board;
+  boardGame.forEach((item) => {
     item.addEventListener("click", (e) => {
       const h2 = document.querySelector(".message");
+      const h3 = document.querySelector(".gameScoreTally");
       h2.innerHTML = "Lets Play";
       const winner = game.checkForWinner();
 
       if (winner === "tie") {
         // Handle tie
         h2.textContent = "It's a tie!";
+        h3.textContent = `Player One: ${playerOne.score} | ${playerTwo.score}  :Player Two`;
+        clearBoard();
       } else if (winner === playerOne.marker) {
         // Handle player one win
-        playerOne.scoreLevel();
         h2.innerHTML = "Player One wins!";
+        playerOne.scoreLevel();
+        h3.textContent = `Player One: ${playerOne.score} | ${playerTwo.score}  :Player Two`;
+        clearBoard();
       } else if (winner === playerTwo.marker) {
         // Handle player two win
-        playerTwo.scoreLevel();
         h2.innerHTML = "Player Two wins!";
-        console.log("Player Two wins!");
+        playerTwo.scoreLevel();
+        h3.textContent = `Player One: ${playerOne.score} | ${playerTwo.score}  :Player Two`;
+        clearBoard();
+      }
+
+      if (playerOne.score == 3 || playerTwo.score == 3) {
+        alert(`${player.name} Won!!!`);
+        h3.textContent = "";
+        playerOne.resetScore();
+        playerTwo.resetScore();
       }
     });
+    function clearBoard() {
+      boardGame.forEach((item) => {
+        item.textContent = "";
+      });
+    }
   });
 })();
 const displayController = function () {
