@@ -100,6 +100,7 @@ const winner = (function () {
 
       if (playerOne.score == 3 || playerTwo.score == 3) {
         alert(`${player.name} Won!!!`);
+
         h3.textContent = "";
         playerOne.resetScore();
         playerTwo.resetScore();
