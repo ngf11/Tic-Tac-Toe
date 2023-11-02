@@ -26,23 +26,6 @@ const gameBoard = (function () {
       } else {
         item.textContent = playerTwo.marker;
       }
-      const h2 = document.querySelector(".message");
-      h2.innerHTML = "Lets Play";
-      const winner = game.checkForWinner();
-
-      if (winner === "tie") {
-        // Handle tie
-        h2.textContent = "It's a tie!";
-      } else if (winner === playerOne.marker) {
-        // Handle player one win
-        playerOne.scoreLevel();
-        h2.innerHTML = "Player One wins!";
-      } else if (winner === playerTwo.marker) {
-        // Handle player two win
-        playerTwo.scoreLevel();
-        h2.innerHTML = "Player Two wins!";
-        console.log("Player Two wins!");
-      }
     });
     resetGameBnt.addEventListener("click", (event) => {
       item.textContent = "";
@@ -78,10 +61,34 @@ const game = {
       }
     }
 
-    // return "tie";
+    return "tie";
   },
 };
 
+const winner = (function () {
+  const { board } = gameBoard;
+  board.forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const h2 = document.querySelector(".message");
+      h2.innerHTML = "Lets Play";
+      const winner = game.checkForWinner();
+
+      if (winner === "tie") {
+        // Handle tie
+        h2.textContent = "It's a tie!";
+      } else if (winner === playerOne.marker) {
+        // Handle player one win
+        playerOne.scoreLevel();
+        h2.innerHTML = "Player One wins!";
+      } else if (winner === playerTwo.marker) {
+        // Handle player two win
+        playerTwo.scoreLevel();
+        h2.innerHTML = "Player Two wins!";
+        console.log("Player Two wins!");
+      }
+    });
+  });
+})();
 const displayController = function () {
   // i dont knbow what to do here
 };

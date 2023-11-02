@@ -3,7 +3,6 @@ game sort of works
 in a very bad way
 
 re fin this game once is document
-for now new need:
--move the win functionality to another function
--export the board function loop the win if statements see if that works 
+for now you need:
+
 -- add a function that declars a winner after best of three games 
