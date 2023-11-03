@@ -130,24 +130,28 @@ const displayController = (function () {
     selectedMode = "AI-players";
     mainContent.style.display = "contents";
     mainContent.style.transition = "ease-in 2000ms";
+    startGame();
   });
   twoPlayerButton.addEventListener("click", (e) => {
     selectedMode = "two-players";
     mainContent.style.display = "contents";
     mainContent.style.transition = "ease-in 2000ms";
+    startGame();
   });
   computerPlayerButton.addEventListener("click", (e) => {
     selectedMode = "computer-players";
     mainContent.style.display = "contents";
     mainContent.style.transition = "ease-in 2000ms";
+    startGame();
   });
-  const startGame = (function () {
+  const startGame = function () {
     if (selectedMode === "two-players") {
       // Start a two-player game
       // You can implement your two-player game logic here
     } else if (selectedMode === "computer-players") {
       // Start a game against the computer
-      // You'll need to implement your computer player logic here
+
+      computerPlayer();
     } else if (selectedMode === "AI-player") {
       // Start a game against an AI opponent
       // You'll need to implement your AI player logic here
@@ -155,11 +159,9 @@ const displayController = (function () {
       // Handle the case when no mode is selected
       alert("Please select a game mode!");
     }
-  })();
+  };
 })();
 
-const computerPlyer = () => {
-  const { board } = gameBoard;
-  console.table(board);
+const computerPlayer = () => {
+  const { board, clickCount } = gameBoard;
 };
-computerPlyer();
