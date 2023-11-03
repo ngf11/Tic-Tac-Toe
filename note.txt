@@ -1,5 +1,9 @@
 game sort of works 
 
 in a very bad way
-
+---LOGIC---
 -basic computer vs human function 
+
+--STYLE--
+-buttons
+- dark mood

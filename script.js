@@ -113,6 +113,53 @@ const winner = (function () {
     }
   });
 })();
-const displayController = function () {
-  // i dont knbow what to do here
+
+const displayController = (function () {
+  //elements
+  const header = document.querySelector(".header");
+  const mainContent = document.querySelector(".main");
+  mainContent.style.display = "none";
+
+  //game buttons
+  let selectedMode = null;
+  const twoPlayerButton = document.querySelector(".two-players");
+  const computerPlayerButton = document.querySelector(".computer-players");
+  const AiPlayerButton = document.querySelector(".AI-players");
+
+  AiPlayerButton.addEventListener("click", (e) => {
+    selectedMode = "AI-players";
+    mainContent.style.display = "contents";
+    mainContent.style.transition = "ease-in 2000ms";
+  });
+  twoPlayerButton.addEventListener("click", (e) => {
+    selectedMode = "two-players";
+    mainContent.style.display = "contents";
+    mainContent.style.transition = "ease-in 2000ms";
+  });
+  computerPlayerButton.addEventListener("click", (e) => {
+    selectedMode = "computer-players";
+    mainContent.style.display = "contents";
+    mainContent.style.transition = "ease-in 2000ms";
+  });
+  const startGame = (function () {
+    if (selectedMode === "two-players") {
+      // Start a two-player game
+      // You can implement your two-player game logic here
+    } else if (selectedMode === "computer-players") {
+      // Start a game against the computer
+      // You'll need to implement your computer player logic here
+    } else if (selectedMode === "AI-player") {
+      // Start a game against an AI opponent
+      // You'll need to implement your AI player logic here
+    } else {
+      // Handle the case when no mode is selected
+      alert("Please select a game mode!");
+    }
+  })();
+})();
+
+const computerPlyer = () => {
+  const { board } = gameBoard;
+  console.table(board);
 };
+computerPlyer();
