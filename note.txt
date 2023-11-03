@@ -1,6 +1,6 @@
-game sort of works 
+--NOTES--
+- refactore this code 
 
-in a very bad way
 ---LOGIC---
 -basic computer vs human function 
 
